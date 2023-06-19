@@ -1,55 +1,55 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\.7f56ace5fe12b559df85b1de7001022aca7f6117-audit.json",
+  "files": [
+    {
+      "date": 1686994358082,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-15-error.log",
+      "hash": "92d1def6e50ffdf6ecb6ce9af151a38afb0228e205ce17cc145754edd0a29531"
     },
-    "auditLog": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\.7f56ace5fe12b559df85b1de7001022aca7f6117-audit.json",
-    "files": [
-        {
-            "date": 1686994358082,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-15-error.log",
-            "hash": "92d1def6e50ffdf6ecb6ce9af151a38afb0228e205ce17cc145754edd0a29531"
-        },
-        {
-            "date": 1687019419751,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-22-error.log",
-            "hash": "a72c8a44db6c77dabc56de4cd379d85589788b5b1274d06571cb4669731f8941"
-        },
-        {
-            "date": 1687021681066,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-23-error.log",
-            "hash": "d8641e4eb8317337a2ab77efb32f4d4279424f8b379ce0ec2e2ea4da3303bec9"
-        },
-        {
-            "date": 1687025737805,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-00-error.log",
-            "hash": "3fe13a7ff7843307831d802ef3c47e30863b0c01beb7b846d3f89b6ce1945ff3"
-        },
-        {
-            "date": 1687028883328,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-01-error.log",
-            "hash": "d28c6b165efa0af79b14ef6a3441aecc198791a6a947b4eec7bccd37dabcb071"
-        },
-        {
-            "date": 1687075890716,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-14-error.log",
-            "hash": "d4b7049ce8367791466bc2e4d24ac14d8734d7c6e72c5aeddb86326b5faa337a"
-        },
-        {
-            "date": 1687169302207,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-16-error.log",
-            "hash": "23f275b3f50de9d71da404640f3aa49c69985260f431a423091c40a1925386cf"
-        },
-        {
-            "date": 1687175853254,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-17-error.log",
-            "hash": "a9ffcb277c72c6f4d92d1c2663419e672a13fda51d0d70ac1594614f884dca2c"
-        },
-        {
-            "date": 1687177024961,
-            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-18-error.log",
-            "hash": "f92f2386ff3c4952515f584f79b96d2b96ad511f33110a0263403b530e289654"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1687019419751,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-22-error.log",
+      "hash": "a72c8a44db6c77dabc56de4cd379d85589788b5b1274d06571cb4669731f8941"
+    },
+    {
+      "date": 1687021681066,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-17-06-23-error.log",
+      "hash": "d8641e4eb8317337a2ab77efb32f4d4279424f8b379ce0ec2e2ea4da3303bec9"
+    },
+    {
+      "date": 1687025737805,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-00-error.log",
+      "hash": "3fe13a7ff7843307831d802ef3c47e30863b0c01beb7b846d3f89b6ce1945ff3"
+    },
+    {
+      "date": 1687028883328,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-01-error.log",
+      "hash": "d28c6b165efa0af79b14ef6a3441aecc198791a6a947b4eec7bccd37dabcb071"
+    },
+    {
+      "date": 1687075890716,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-18-06-14-error.log",
+      "hash": "d4b7049ce8367791466bc2e4d24ac14d8734d7c6e72c5aeddb86326b5faa337a"
+    },
+    {
+      "date": 1687169302207,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-16-error.log",
+      "hash": "23f275b3f50de9d71da404640f3aa49c69985260f431a423091c40a1925386cf"
+    },
+    {
+      "date": 1687175853254,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-17-error.log",
+      "hash": "a9ffcb277c72c6f4d92d1c2663419e672a13fda51d0d70ac1594614f884dca2c"
+    },
+    {
+      "date": 1687177024961,
+      "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\errors\\phu-2023-19-06-18-error.log",
+      "hash": "f92f2386ff3c4952515f584f79b96d2b96ad511f33110a0263403b530e289654"
+    }
+  ],
+  "hashType": "sha256"
 }
