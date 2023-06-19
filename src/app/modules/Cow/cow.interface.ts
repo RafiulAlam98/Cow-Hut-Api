@@ -34,3 +34,5 @@ export type ICow = {
   seller: Types.ObjectId | IUser
 }
 export type CowModel = Model<ICow>
+
+export type ICowFilter = { searchTerm: string }

@@ -1,0 +1,9 @@
+export type IPaginationOptions = {
+  page?: number
+  limit?: number
+  sortBy?: string
+  sortOrder?: 'asc' | 'desc' // asc or dsc
+  minPrice?: number
+  maxPrice?: number
+  location: string
+}

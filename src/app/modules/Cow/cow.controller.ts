@@ -1,6 +1,10 @@
+import { Request, Response } from 'express'
 import httpStatus from 'http-status'
+import { paginationConstants } from '../../../constants/paginationConstants'
 import { catchAsyncTry } from '../../../shared/catchAsyncTry'
+import pick from '../../../shared/pick'
 import sendResponse from '../../../shared/sendResponse'
+import { cowsFilterableFields } from './cow.constatnt'
 import { CowService } from './cow.service'
 
 const createCowController = catchAsyncTry(async (req, res) => {
@@ -14,16 +18,23 @@ const createCowController = catchAsyncTry(async (req, res) => {
   })
 })
 
-const getAllCowsController = catchAsyncTry(async (req, res) => {
-  const result = await CowService.getAllCowsService()
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Cows retrieved successfully',
-    data: result,
-  })
-})
+const getAllCowsController = catchAsyncTry(
+  async (req: Request, res: Response) => {
+    const filters = pick(req.query, cowsFilterableFields)
+    const paginationOptions = pick(req.query, paginationConstants)
 
+    const result = await CowService.getAllCowsService(
+      paginationOptions,
+      filters
+    )
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Cow retrieved successfully!',
+      data: result,
+    })
+  }
+)
 const getSingleCowController = catchAsyncTry(async (req, res) => {
   const id = req.params.id
   const result = await CowService.getSingleCowService(id)

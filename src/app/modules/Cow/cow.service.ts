@@ -1,6 +1,10 @@
 import httpStatus from 'http-status'
+import { SortOrder } from 'mongoose'
+import { paginationSystem } from '../../../helpersFn/paginationSystem'
+import { IPaginationOptions } from '../../../interfaces/paginations/paginations'
 import ApiError from '../../errors/ApiError'
-import { ICow } from './cow.interface'
+import { cowSearchField } from './cow.constatnt'
+import { ICow, ICowFilter } from './cow.interface'
 import { cows } from './cow.model'
 
 const createCowService = async (cow: ICow): Promise<ICow> => {
@@ -11,9 +15,58 @@ const createCowService = async (cow: ICow): Promise<ICow> => {
   return createdCowService
 }
 
-export const getAllCowsService = async (): Promise<ICow[]> => {
-  const result = await cows.find()
-  return result
+export const getAllCowsService = async (
+  paginationOptions: IPaginationOptions,
+  filters: ICowFilter
+) => {
+  const andConditions = []
+  const { searchTerm, ...filtersData } = filters
+
+  if (searchTerm) {
+    andConditions.push({
+      $or: cowSearchField.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
+        },
+      })),
+    })
+  }
+
+  if (Object.keys(filtersData).length) {
+    andConditions.push({
+      $and: Object.entries(filtersData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    })
+  }
+
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationSystem.paginationFormat(paginationOptions)
+
+  const sortConditions: { [key: string]: SortOrder } = {}
+
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder
+  }
+
+  const whereConditions =
+    andConditions.length > 0 ? { $and: andConditions } : {}
+
+  const result = await cows
+    .find(whereConditions)
+    .sort(sortConditions)
+    .skip(skip)
+    .limit(limit)
+  const total = await cows.countDocuments()
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  }
 }
 
 export const getSingleCowService = async (id: string): Promise<ICow | null> => {
