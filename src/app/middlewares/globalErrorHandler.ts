@@ -1,8 +1,12 @@
 import { ErrorRequestHandler } from 'express'
+import { ZodError } from 'zod'
 import config from '../../config'
 import { IGenericErrorMessage } from '../../interfaces/error/error'
 import { errorlogger } from '../../shared/logger'
+import ApiError from '../errors/ApiError'
+import { handleCastError } from '../errors/handleCastErrors'
 import { handleValidationError } from '../errors/handleValidationError'
+import { handleZodError } from '../errors/handleZodError'
 
 export const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
   let statusCode = 500
@@ -19,44 +23,43 @@ export const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
-    // } else if (err instanceof ZodError) {
-    //   const simplifiedError = handleZodError(err)
-    //   statusCode = simplifiedError.statusCode
-    //   message = simplifiedError.message
-    //   errorMessages = simplifiedError.errorMessages
-    // } else if (err instanceof Error) {
-    //   message = err?.message
-    //   errorMessages = err?.message
-    //     ? [
-    //         {
-    //           path: ' ',
-    //           message: err.message,
-    //         },
-    //       ]
-    //     : []
-    // } else if (err.name === 'CastError') {
-    //   const simplifiedError = handleCastError(err)
-    //   statusCode = simplifiedError.statusCode
-    //   message = simplifiedError.message
-    //   errorMessages = simplifiedError.errorMessages
-    // } else if (err instanceof ApiError) {
-    //   statusCode = err?.statusCode
-    //   message = err?.message
-    //   errorMessages = err?.message
-    //     ? [
-    //         {
-    //           path: '',
-    //           message: err.message,
-    //         },
-    //       ]
-    //     : []
-    // }
-
-    res.status(statusCode).json({
-      success: false,
-      message,
-      errorMessages,
-      stack: config.env === 'development' ? err?.stack : undefined,
-    })
+  } else if (err instanceof ZodError) {
+    const simplifiedError = handleZodError(err)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessage
+  } else if (err instanceof Error) {
+    message = err?.message
+    errorMessages = err?.message
+      ? [
+          {
+            path: ' ',
+            message: err.message,
+          },
+        ]
+      : []
+  } else if (err.name === 'CastError') {
+    const simplifiedError = handleCastError(err)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessage
+  } else if (err instanceof ApiError) {
+    statusCode = err?.statusCode
+    message = err?.message
+    errorMessages = err?.message
+      ? [
+          {
+            path: '',
+            message: err.message,
+          },
+        ]
+      : []
   }
+
+  res.status(statusCode).json({
+    success: false,
+    message,
+    errorMessages,
+    stack: config.env === 'development' ? err?.stack : undefined,
+  })
 }
