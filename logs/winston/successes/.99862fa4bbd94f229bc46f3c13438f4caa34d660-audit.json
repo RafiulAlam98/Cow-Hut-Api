@@ -39,6 +39,16 @@
             "date": 1687169302204,
             "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\successes\\phu-2023-19-06-16-success.log",
             "hash": "35d7d507da5b4c07bef97903a48788adc5360e21c06d3d4386fa406ffa034057"
+        },
+        {
+            "date": 1687175853251,
+            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\successes\\phu-2023-19-06-17-success.log",
+            "hash": "b5d1e0c4a168f963a60bc596af4316b7af0c0494e25ad0e54a34da8f56c3efb0"
+        },
+        {
+            "date": 1687177024958,
+            "name": "D:\\projects\\phero-2.0\\assignment-3\\logs\\winston\\successes\\phu-2023-19-06-18-success.log",
+            "hash": "b6d4c9afbf9d23ced2be4f83e5a16e54c1aadc7345a5beb121197c1a39cb99af"
         }
     ],
     "hashType": "sha256"
