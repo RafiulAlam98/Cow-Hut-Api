@@ -12,7 +12,7 @@ const createSeller = catchAsyncTry(async (req: Request, res: Response) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Seller created successfully',
-    data: result,
+    data: result
   })
 })
 

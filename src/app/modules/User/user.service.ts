@@ -1,5 +1,3 @@
-import { generateBuyerId, generateSellerId } from './user.util';
-
 import ApiError from '../../errors/ApiError';
 import { Buyer } from '../Buyer/buyer.model';
 import { Cow } from '../Cow/cow.model';
@@ -25,9 +23,9 @@ const createSeller = async (
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const id = await generateSellerId();
-    user.id = id;//S-00001
-    seller.id = id;//S-00001
+    // const id = await generateSellerId();
+    // user.id = id;//S-00001
+    // seller.id = id;//S-00001
 
     const newSeller = await Seller.create([seller], { session });
 
@@ -71,9 +69,10 @@ const createbuyer = async (
   const session = await mongoose.startSession()
   try {
     session.startTransaction()
-    const id = await generateBuyerId()
-    user.id = id
-    buyer.id = id
+    // const genId = await generateBuyerId()
+    // console.log(genId)
+    // user.id = genId
+    // buyer.id = genId
 
     const newBuyer = await Buyer.create([buyer], { session })
 

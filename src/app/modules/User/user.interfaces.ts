@@ -4,7 +4,7 @@ import { IBuyer } from '../Buyer/buyer.interface'
 import { ISeller } from '../Seller/seller.interface'
 
 export type IUser = {
-  id: string
+  // id: string
   role: string
   password: string
   seller?: Types.ObjectId | ISeller

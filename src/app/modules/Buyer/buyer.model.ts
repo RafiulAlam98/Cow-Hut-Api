@@ -3,11 +3,11 @@ import { Schema, model } from 'mongoose'
 
 export const BuyerSchema = new Schema<IBuyer, BuyerModel>(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    // id: {
+    //   type: String,
+    //   required: true,
+    //   unique: true,
+    // },
     password: {
       type: String,
       required: true,
