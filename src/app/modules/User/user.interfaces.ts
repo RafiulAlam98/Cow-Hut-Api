@@ -1,17 +1,13 @@
-export type IUserName = {
-  firstName: string
-  lastName: string
-}
-export enum Role {
-  BUYER = 'buyer',
-  SELLER = 'seller',
-}
+import { Model, Types } from 'mongoose'
+
+import { IBuyer } from '../Buyer/buyer.interface'
+import { ISeller } from '../Seller/seller.interface'
+
 export type IUser = {
+  id: string
+  role: string
   password: string
-  role: Role
-  name: IUserName
-  phoneNumber: string
-  address: string
-  budget: number
-  income: number
+  seller?: Types.ObjectId | ISeller
+  buyer?: Types.ObjectId | IBuyer
 }
+export type UserModel = Model<IUser>

@@ -1,16 +1,17 @@
 import { Request, Response } from 'express'
-import httpStatus from 'http-status'
-import { catchAsyncTry } from '../../../shared/catchAsyncTry'
-import sendResponse from '../../../shared/sendResponse'
-import { UserService } from './user.service'
 
-const createUser = catchAsyncTry(async (req, res) => {
-  const { ...user } = req.body
-  const result = await UserService.createUserService(user)
+import { UserService } from './user.service'
+import { catchAsyncTry } from '../../../shared/catchAsyncTry'
+import httpStatus from 'http-status'
+import sendResponse from '../../../shared/sendResponse'
+
+const createSeller = catchAsyncTry(async (req: Request, res: Response) => {
+  const { seller, ...user } = req.body;
+  const result = await UserService.createSeller(seller, user)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User created successfully !',
+    message: 'Seller created successfully',
     data: result,
   })
 })
@@ -59,7 +60,7 @@ const deleteSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
   })
 })
 export const UserController = {
-  createUser,
+  createSeller,
   getAllUsers,
   getSingleUser,
   updateSingleUser,

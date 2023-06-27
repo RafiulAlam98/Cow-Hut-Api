@@ -1,9 +1,8 @@
+import ApiError from '../errors/ApiError'
 import { ErrorRequestHandler } from 'express'
+import { IGenericErrorMessage } from '../../interfaces/error/error'
 import { ZodError } from 'zod'
 import config from '../../config'
-import { IGenericErrorMessage } from '../../interfaces/error/error'
-import { errorlogger } from '../../shared/logger'
-import ApiError from '../errors/ApiError'
 import { handleCastError } from '../errors/handleCastErrors'
 import { handleValidationError } from '../errors/handleValidationError'
 import { handleZodError } from '../errors/handleZodError'
@@ -15,8 +14,8 @@ export const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
 
   // eslint-disable-next-line no-unused-expressions
   config.env === 'development'
-    ? errorlogger.error('globalhandler12345', err)
-    : errorlogger.error('globalHandler', err)
+    ? console.log('globalhandler12345', err)
+    : console.log('globalHandler', err)
 
   if (err?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(err)
