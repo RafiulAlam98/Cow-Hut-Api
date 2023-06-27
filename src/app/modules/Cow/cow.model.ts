@@ -1,6 +1,6 @@
+import { CowModel, ICow } from './cow.interface'
 import { Schema, model } from 'mongoose'
 import { cowBreed, cowCategory, cowLabel, cowLocations } from './cow.constatnt'
-import { CowModel, ICow } from './cow.interface'
 
 const cowSchema = new Schema<ICow>(
   {
@@ -54,4 +54,4 @@ const cowSchema = new Schema<ICow>(
   }
 )
 
-export const cows = model<ICow, CowModel>('Cow', cowSchema)
+export const Cow = model<ICow, CowModel>('Cow', cowSchema)

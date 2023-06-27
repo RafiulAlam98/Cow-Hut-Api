@@ -6,7 +6,7 @@ export type UserName = {
 }
 
 export type IBuyer = {
-  _id: any
+  password:string
   id: string
   name: UserName
   phoneNumber: string

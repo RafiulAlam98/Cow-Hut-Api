@@ -1,4 +1,6 @@
+import { BuyerRoutes } from './../modules/Buyer/buyer.route'
 import { CowRoutes } from '../modules/Cow/cow.routes'
+import { SellerRoutes } from '../modules/Seller/seller.routes'
 import { UserRoutes } from '../modules/User/user.routes'
 import express from 'express'
 
@@ -12,6 +14,22 @@ const moduleRoutes = [
   {
     path: '/cows',
     route: CowRoutes.router,
+  },
+  {
+    path: '/seller',
+    route: SellerRoutes.router,
+  },
+  {
+    path: '/buyer',
+    route: BuyerRoutes.router,
+  },
+  {
+    path: '/users',
+    route: UserRoutes.router,
+  },
+  {
+    path: '/order',
+    route: UserRoutes.router,
   },
 ]
 

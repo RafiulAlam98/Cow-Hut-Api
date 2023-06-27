@@ -8,6 +8,11 @@ export const BuyerSchema = new Schema<IBuyer, BuyerModel>(
       required: true,
       unique: true,
     },
+    password: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     name: {
       type: {
         firstName: {
