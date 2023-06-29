@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "F:\\New folder (2)\\digital-cow-hut\\logs\\winston\\errors\\.dc2b655eeaaafb0b39d214f67bcfbf880136076b-audit.json",
+    "files": [
+        {
+            "date": 1688031325704,
+            "name": "F:\\New folder (2)\\digital-cow-hut\\logs\\winston\\errors\\phu-2023-29-06-15-error.log",
+            "hash": "81c4397dc88740589f71a5601b692ab148f1e681193af89d949c3da6da7e1875"
+        }
+    ],
+    "hashType": "sha256"
+}
