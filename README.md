@@ -9,7 +9,7 @@
 # Application Routes:
 
 ### Sample User(Seller/Buyer) Post json type
-{
+```{
   "seller": {
     "name": {
       "firstName": "luka",
@@ -20,6 +20,7 @@
     "income": 1000
   }
 }
+```
 
 ### User
 - http://localhost:5000/api/v1/auth/signup/seller [create/signup a seller] (POST)
@@ -49,7 +50,7 @@
 - http://localhost:5000/api/v1/cows/649d46554020c7b614810964 [delete]
 
 ### Sample Cow Data for create a cow
-
+```
 {
   "name": "king",
   "age": 4,
@@ -61,7 +62,7 @@
   "category": "Beef",
   "seller": "648dbc743f8caeacd1d9211e"
 }
-
+```
 ### pagination field for cow
 
 - http://localhost:5000/api/v1/cows?page=1&limit=1 [page and limit]
@@ -76,7 +77,9 @@
 
 
 ### Sample Cow Order Data to create a Order
+```
 {
   "cow": "648dbe893f8caeacd1d92178",
   "buyer": "648dbdd53f8caeacd1d92154"
 }
+```
