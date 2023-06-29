@@ -7,15 +7,10 @@ const UserSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
-    // id: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    // },
-
-    password: {
+    id: {
       type: String,
       required: true,
+      unique: true,
     },
     seller: {
       type: Schema.Types.ObjectId,

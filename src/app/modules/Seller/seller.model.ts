@@ -2,7 +2,7 @@ import { ISeller, SellerModel } from './seller.interface'
 import { Schema, model } from 'mongoose'
 
 export const SellerSchema = new Schema<ISeller, SellerModel>(
-  {
+  { 
     id: {
       type: String,
       required: true,
@@ -24,7 +24,7 @@ export const SellerSchema = new Schema<ISeller, SellerModel>(
     phoneNumber: {
       type: String,
       required: true,
-      unique: true,
+    
     },
     address: {
       type: String,
@@ -33,10 +33,6 @@ export const SellerSchema = new Schema<ISeller, SellerModel>(
     income: {
       type: Number,
       required: true,
-    },
-
-    profileImage: {
-      type: String,
     },
   },
   {

@@ -6,12 +6,12 @@ export type UserName = {
 }
 
 export type ISeller = {
+  _id: any
   id: string
   name: UserName
   phoneNumber: string
   address: string
   income: number
-  profileImage?: string
 }
 
 export type SellerModel = Model<ISeller>

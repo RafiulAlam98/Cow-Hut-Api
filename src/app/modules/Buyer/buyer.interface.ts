@@ -6,13 +6,13 @@ export type UserName = {
 }
 
 export type IBuyer = {
-  password:string
-  // id: string
+  _id: any
+  password: string
+  id: string
   name: UserName
   phoneNumber: string
   address: string
   budget: number
-  profileImage?: string
 }
 
 export type BuyerModel = Model<IBuyer>

@@ -3,10 +3,6 @@ import { Schema, model } from 'mongoose'
 
 export const OrderSchema = new Schema<IOrder, OrderModel>(
   {
-    id: {
-      type: String,
-      unique: true,
-    },
     cow: {
       type: Schema.Types.ObjectId,
       ref: 'Cow',

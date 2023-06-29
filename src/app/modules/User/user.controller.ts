@@ -1,12 +1,15 @@
 import { Request, Response } from 'express'
-
-import { UserService } from './user.service'
-import { catchAsyncTry } from '../../../shared/catchAsyncTry'
+import { RequestHandler } from 'express-serve-static-core'
 import httpStatus from 'http-status'
+import { catchAsyncTry } from '../../../shared/catchAsyncTry'
 import sendResponse from '../../../shared/sendResponse'
+import { UserService } from './user.service'
+
 
 const createSeller = catchAsyncTry(async (req: Request, res: Response) => {
-  const { seller, ...user } = req.body
+
+  const { ...seller } = req.body
+  const {...user} = req.body
   const result = await UserService.createSeller(seller, user)
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -16,9 +19,10 @@ const createSeller = catchAsyncTry(async (req: Request, res: Response) => {
   })
 })
 
-const createbuyer = catchAsyncTry(async (req: Request, res: Response) => {
-  const { buyer, ...userData } = req.body
-  const result = await UserService.createbuyer(buyer, userData)
+const createbuyer: RequestHandler = catchAsyncTry(async (req: Request, res: Response) => {
+  const {...buyer} = req.body
+  const { ...user } = req.body
+  const result = await UserService.createbuyer(buyer, user)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
