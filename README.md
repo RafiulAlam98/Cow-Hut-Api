@@ -23,31 +23,31 @@
 ```
 
 ### User
-- http://localhost:5000/api/v1/auth/signup/seller [create/signup a seller] (POST)
-- http://localhost:5000/api/v1/auth/signup/buyer [create/signup a buyer] (POST)
-- http://localhost:5000/api/v1/users [get all users] (GET)
-- http://localhost:5000/api/v1/users/649d453a4020c7b61481095b [get Single user] (GET)
-- http://localhost:5000/api/v1/users/649d453a4020c7b61481095b (Update Single user) (PATCH)
-- http://localhost:5000/api/v1/users/649d453a4020c7b61481095b [Delete Single user] (DELETE)
+- https://cow-hut-zeta.vercel.app/api/v1/auth/signup/seller [create/signup a seller] (POST)
+- https://cow-hut-zeta.vercel.app/api/v1/auth/signup/buyer [create/signup a buyer] (POST)
+- https://cow-hut-zeta.vercel.app/api/v1/users [get all users] (GET)
+- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [get Single user] (GET)
+- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b (Update Single user) (PATCH)
+- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [Delete Single user] (DELETE)
 
 ### Seller
-- http://localhost:5000/api/v1/seller [Get all seller]
-- http://localhost:5000/api/v1/seller/649d3ee44020c7b614810943 [get single seller]
-- http://localhost:5000/api/v1/seller/649d3ee44020c7b614810943 [patch]
-- http://localhost:5000/api/v1/seller/649d3ee44020c7b614810943 [delete]
+- https://cow-hut-zeta.vercel.app/api/v1/seller [Get all seller]
+- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [get single seller]
+- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [patch]
+- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [delete]
 
 ### Buyer
-- http://localhost:5000/api/v1/buyer/ [get all buyer]
-- http://localhost:5000/api/v1/buyer/649d45394020c7b614810958 [get single buyer]
-- http://localhost:5000/api/v1/buyer/649d45394020c7b614810958 [patch]
-- http://localhost:5000/api/v1/buyer/649d45394020c7b614810958 [delete]
+- https://cow-hut-zeta.vercel.app/api/v1/buyer/ [get all buyer]
+- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [get single buyer]
+- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [patch]
+- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [delete]
 
 ### Cows
-- http://localhost:5000/api/v1/cows/addcows [add cow]
-- http://localhost:5000/api/v1/cows/ [get all cows]
-- http://localhost:5000/api/v1/cows/649d46554020c7b614810964 [get single cow ]
-- http://localhost:5000/api/v1/cows/649d46554020c7b614810964 [patch]
-- http://localhost:5000/api/v1/cows/649d46554020c7b614810964 [delete]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/addcows [add cow]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/ [get all cows]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [get single cow ]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [patch]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [delete]
 
 ### Sample Cow Data for create a cow
 ```
@@ -65,15 +65,15 @@
 ```
 ### pagination field for cow
 
-- http://localhost:5000/api/v1/cows?page=1&limit=1 [page and limit]
-- http://localhost:5000/api/v1/cows?sortBy=price&sortOrder=asc  [sort]
-- http://localhost:5000/api/v1/cows?minPrice=20000&maxPrice=70000  
-- http://localhost:5000/api/v1/cows?location=Chattogram 
-- http://localhost:5000/api/v1/cows?searchTerm=Cha
+- https://cow-hut-zeta.vercel.app/api/v1/cows?page=1&limit=1 [page and limit]
+- https://cow-hut-zeta.vercel.app/api/v1/cows?sortBy=price&sortOrder=asc  [sort]
+- https://cow-hut-zeta.vercel.app/api/v1/cows?minPrice=20000&maxPrice=70000  
+- https://cow-hut-zeta.vercel.app/api/v1/cows?location=Chattogram 
+- https://cow-hut-zeta.vercel.app/api/v1/cows?searchTerm=Cha
   
 ### Orders
-- http://localhost:5000/api/v1/order/addOrder [add order]
-- http://localhost:5000/api/v1/order/allOrder [get all order]
+- https://cow-hut-zeta.vercel.app/api/v1/order/addOrder [add order]
+- https://cow-hut-zeta.vercel.app/api/v1/order/allOrder [get all order]
 
 
 ### Sample Cow Order Data to create a Order
