@@ -5,6 +5,7 @@
 ### All Routes for Cow-Hut-Server
 
 ### Live Link 
+https://cow-hut-zeta.vercel.app/
 
 # Application Routes:
 
