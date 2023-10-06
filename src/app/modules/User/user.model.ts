@@ -3,11 +3,6 @@ import { IUser, UserModel } from './user.interfaces'
 
 const UserSchema = new Schema<IUser>(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     phoneNumber: {
       type: String,
       required: true,

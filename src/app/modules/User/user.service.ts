@@ -1,97 +1,150 @@
-import { generateBuyerId, generateSellerId } from './user.util';
-
-import ApiError from '../../errors/ApiError';
-import { Buyer } from '../Buyer/buyer.model';
-import { Cow } from '../Cow/cow.model';
-import { IBuyer } from '../Buyer/buyer.interface';
-import { IOrder } from '../Order/order.interface';
-import { ISeller } from '../Seller/seller.interface';
-import { IUser } from './user.interfaces';
-import { Order } from '../Order/order.model';
-import { Seller } from '../Seller/seller.model';
-import { User } from './user.model';
-import httpStatus from 'http-status';
-import mongoose from 'mongoose';
+import httpStatus from 'http-status'
+import mongoose from 'mongoose'
+import ApiError from '../../errors/ApiError'
+import { Buyer } from '../Buyer/buyer.model'
+import { Cow } from '../Cow/cow.model'
+import { IOrder } from '../Order/order.interface'
+import { Order } from '../Order/order.model'
+import { Seller } from '../Seller/seller.model'
+import { IUser } from './user.interfaces'
+import { User } from './user.model'
 
 //create A seller
-const createSeller = async (
-  seller: ISeller,
-  user: IUser
-): Promise<IUser | null> => {
-  
-  user.role = 'seller';
+// const createSeller = async (
+//   seller: ISeller,
+//   user: IUser
+// ): Promise<IUser | null> => {
 
-  let newUserAllData = null;
-  const session = await mongoose.startSession();
-  try {
-    session.startTransaction();
-    const id = await generateSellerId();
-    user.id = id;
-    seller.id = id;
-    
+//   user.role = 'seller';
 
-    const newSeller = await Seller.create([seller], { session });
+//   let newUserAllData = null;
+//   const session = await mongoose.startSession();
+//   try {
+//     session.startTransaction();
+//     const id = await generateSellerId();
+//     user.id = id;
+//     seller.id = id;
 
-    if (!newSeller.length) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create Seller');
-    }
+//     const newSeller = await Seller.create([seller], { session });
 
-    user.seller = newSeller[0]._id;
-    const newUser = await User.create([user], { session });
+//     if (!newSeller.length) {
+//       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create Seller');
+//     }
 
-    if (!newUser.length) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create user');
-    }
-    newUserAllData = newUser[0];
+//     user.seller = newSeller[0]._id;
+//     const newUser = await User.create([user], { session });
 
-    await session.commitTransaction();
-    await session.endSession();
-  } catch (error) {
-    await session.abortTransaction();
-    await session.endSession();
-    throw error;
-  }
+//     if (!newUser.length) {
+//       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create user');
+//     }
+//     newUserAllData = newUser[0];
 
-  if (newUserAllData) {
-    newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'seller',
-    });
-  }
-  return newUserAllData;
-};
+//     await session.commitTransaction();
+//     await session.endSession();
+//   } catch (error) {
+//     await session.abortTransaction();
+//     await session.endSession();
+//     throw error;
+//   }
+
+//   if (newUserAllData) {
+//     newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
+//       path: 'seller',
+//     });
+//   }
+//   return newUserAllData;
+// };
 
 // create a buyer
-const createbuyer = async (
-  buyer: IBuyer,
-  user: IUser
-): Promise<IUser | null> => {
-  
-  user.role = 'buyer'
+// const createbuyer = async (
+//   buyer: IBuyer,
+//   user: IUser
+// ): Promise<IUser | null> => {
 
-  let newUserAllData = null
+//   user.role = 'buyer'
+
+//   let newUserAllData = null
+//   const session = await mongoose.startSession()
+//   try {
+//     session.startTransaction()
+//     const genId = await generateBuyerId()
+
+//     user.id = genId
+//     buyer.id = genId
+
+//     const newBuyer = await Buyer.create([buyer], { session })
+
+//     if (!newBuyer.length) {
+//       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create buyer')
+//     }
+
+//     user.buyer = newBuyer[0]._id
+
+//     const newUser = await User.create([user], { session })
+
+//     if (!newUser.length) {
+//       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create user')
+//     }
+//     newUserAllData = newUser[0]
+
+//     await session.commitTransaction()
+//     await session.endSession()
+//   } catch (error) {
+//     await session.abortTransaction()
+//     await session.endSession()
+//     throw error
+//   }
+
+//   if (newUserAllData) {
+//     newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
+//       path: 'buyer',
+//     })
+//   }
+
+//   return newUserAllData
+// }
+
+// const getAllUsersService = async (): Promise<IUser[]> => {
+//   const result = await User.find()
+//   return result
+// }
+
+const createUser = async (payload: IUser) => {
+  const { role } = payload
   const session = await mongoose.startSession()
+  let newUser
+
   try {
     session.startTransaction()
-    const genId = await generateBuyerId()
-   
-    user.id = genId
-    buyer.id = genId
-
-    const newBuyer = await Buyer.create([buyer], { session })
-
-    if (!newBuyer.length) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create buyer')
+    if (role === 'seller') {
+      const result = await Seller.findOne({ phoneNumber: payload.phoneNumber })
+      console.log('Seller', result)
+      if (result) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'User Already Exists')
+      }
+      const newSeller = await Seller.create([payload], { session })
+      if (!newSeller.length) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to Create Seller')
+      }
     }
 
-    user.buyer = newBuyer[0]._id
-
-    const newUser = await User.create([user], { session })
-
-    if (!newUser.length) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create user')
+    if (role === 'buyer') {
+      const result = await Buyer.findOne({ phoneNumber: payload.phoneNumber })
+      if (result) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'User Already Exists')
+      }
+      const newBuyer = await Buyer.create([payload], { session })
+      if (!newBuyer.length) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to Create Buyer')
+      }
     }
-    newUserAllData = newUser[0]
 
+    const result = await User.create([payload], { session })
+    if (!result.length) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to Create User')
+    }
+
+    newUser = result[0]
     await session.commitTransaction()
     await session.endSession()
   } catch (error) {
@@ -99,19 +152,7 @@ const createbuyer = async (
     await session.endSession()
     throw error
   }
-
-  if (newUserAllData) {
-    newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'buyer',
-    })
-  }
-
-  return newUserAllData
-}
-
-const getAllUsersService = async (): Promise<IUser[]> => {
-  const result = await User.find()
-  return result
+  return newUser
 }
 
 const getSingleUser = async (id: string): Promise<IUser | null> => {
@@ -129,25 +170,25 @@ const updateSingleUser = async (
   return result
 }
 
-const deleteSingleUserService = async (id: string) => {
-  const user = await User.findById(id)
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found')
-  }
+// const deleteSingleUserService = async (id: string) => {
+//   const user = await User.findById(id)
+//   if (!user) {
+//     throw new ApiError(httpStatus.NOT_FOUND, 'User not found')
+//   }
 
-  const result = await User.findByIdAndDelete(id)
+//   const result = await User.findByIdAndDelete(id)
 
-  let buyerDelete = null
-  let sellerDelete = null
+//   let buyerDelete = null
+//   let sellerDelete = null
 
-  if (user.buyer) {
-    buyerDelete = await Buyer.findByIdAndDelete({ _id: user.buyer })
-  }
-  if (user.seller) {
-    sellerDelete = await Seller.findByIdAndDelete({ _id: user.seller })
-  }
-  return { result, buyerDelete, sellerDelete }
-}
+//   if (user.buyer) {
+//     buyerDelete = await Buyer.findByIdAndDelete({ _id: user.buyer })
+//   }
+//   if (user.seller) {
+//     sellerDelete = await Seller.findByIdAndDelete({ _id: user.seller })
+//   }
+//   return { result, buyerDelete, sellerDelete }
+// }
 
 const orderCow = async (order: IOrder) => {
   const session = await mongoose.startSession()
@@ -223,15 +264,14 @@ const getAllOrders = async () => {
   return result
 }
 
-
-
 export const UserService = {
   orderCow,
+  createUser,
   getAllOrders,
-  createSeller,
-  createbuyer,
-  getAllUsersService,
+  // createSeller,
+  // createbuyer,
+  // getAllUsersService,
   getSingleUser,
   updateSingleUser,
-  deleteSingleUserService,
+  // deleteSingleUserService,
 }

@@ -1,14 +1,14 @@
-import { BuyerRoutes } from './../modules/Buyer/buyer.route'
+import express from 'express'
 import { CowRoutes } from '../modules/Cow/cow.routes'
 import { SellerRoutes } from '../modules/Seller/seller.routes'
 import { UserRoutes } from '../modules/User/user.routes'
-import express from 'express'
+import { BuyerRoutes } from './../modules/Buyer/buyer.route'
 
 const router = express.Router()
 
 const moduleRoutes = [
   {
-    path: '/auth/signup',
+    path: '/auth',
     route: UserRoutes.router,
   },
   {
