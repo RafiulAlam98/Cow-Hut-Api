@@ -20,7 +20,7 @@ const moduleRoutes = [
     route: CowRoutes.router,
   },
   {
-    path: '/order',
+    path: '/orders',
     route: UserRoutes.router,
   },
   {

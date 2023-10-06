@@ -85,8 +85,6 @@ export const UserController = {
   CreateOrderCow,
   createUser,
   getAllOrders,
-  // createSeller,
-  // createbuyer,
   getAllUsers,
   getSingleUser,
   updateSingleUser,

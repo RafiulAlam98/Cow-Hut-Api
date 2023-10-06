@@ -41,8 +41,7 @@ const cowSchema = new Schema<ICow>(
       enum: cowCategory,
     },
     seller: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+      type: String,
       required: true,
     },
   },

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import httpStatus from 'http-status'
 import mongoose from 'mongoose'
 import ApiError from '../../errors/ApiError'
@@ -8,7 +9,6 @@ import { Order } from '../Order/order.model'
 import { Seller } from '../Seller/seller.model'
 import { IUser } from './user.interfaces'
 import { User } from './user.model'
-
 
 const createUser = async (payload: IUser) => {
   const { role } = payload
@@ -52,10 +52,10 @@ const createUser = async (payload: IUser) => {
     newUser = result[0]
     await session.commitTransaction()
     await session.endSession()
-  } catch (error) {
+  } catch (ApiError) {
     await session.abortTransaction()
     await session.endSession()
-    throw error
+    throw ApiError
   }
   return newUser
 }
@@ -106,10 +106,10 @@ const deleteSingleUserService = async (id: string) => {
     deleteUser = deletedUser
     await session.commitTransaction()
     await session.endSession()
-  } catch (error) {
+  } catch (ApiError) {
     await session.abortTransaction()
     await session.endSession()
-    throw error
+    throw ApiError
   }
 
   return deleteUser
@@ -125,27 +125,33 @@ const orderCow = async (order: IOrder) => {
     //buyer:id
     const cow = await Cow.findById(order.cow).session(session)
     if (!cow) {
-      throw new Error('Cow not found')
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Cow not found')
     }
+
+    const sellerId = cow.seller
     // Check if the cow is available for sale
     if (cow.label !== 'for sale') {
-      throw new Error('The cow is not available for sale')
+      throw new ApiError(
+        httpStatus.BAD_REQUEST,
+        'The cow is not available for sale'
+      )
     }
 
     // Find the seller
-    const seller = await Seller.findById(cow.seller).session(session)
+    const seller = await User.findOne({ _id: sellerId }).session(session)
+
     if (!seller) {
-      throw new Error('Seller not found')
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Seller not found')
     }
 
     // Find the buyer
-    const buyer = await Buyer.findById(order.buyer).session(session)
+    const buyer = await User.findById(order.buyer).session(session)
     if (!buyer) {
-      throw new Error('Buyer not found')
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Buyer not found')
     }
     // Check if the buyer has enough budget to buy the cow
-    if (buyer.budget < cow.price) {
-      throw new Error('Buyer does not have enough budget to buy the cow')
+    if (buyer.budget! < cow.price) {
+      throw new ApiError('Buyer does not have enough budget to buy the cow')
     }
 
     // Update the cow's status to sold
@@ -153,8 +159,8 @@ const orderCow = async (order: IOrder) => {
     await cow.save()
 
     // Transfer money from buyer to seller
-    seller.income += cow.price
-    buyer.budget -= cow.price
+    seller.income! += cow.price
+    buyer.budget! -= cow.price
     await seller.save()
     await buyer.save()
 
@@ -169,17 +175,14 @@ const orderCow = async (order: IOrder) => {
     newOrderData = newOrder[0]
 
     // Populate the 'buyer' field in the newOrder document
-    const populatedOrder = await Order.findById(newOrderData._id)
-      .populate('buyer')
-      .populate('cow')
 
     await session.commitTransaction()
     await session.endSession()
-    return populatedOrder
-  } catch (error) {
+    return newOrderData
+  } catch (ApiError) {
     await session.abortTransaction()
     await session.endSession()
-    throw error
+    throw ApiError
   }
 }
 
