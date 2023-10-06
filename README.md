@@ -32,9 +32,9 @@ https://cow-hut-zeta.vercel.app/
 - https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [Delete Single user] (DELETE)
 
 ### Cows
-- https://cow-hut-zeta.vercel.app/api/v1/cows [add cow]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/ [get all cows]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [get single cow ]
+- https://cow-hut-zeta.vercel.app/api/v1/cows (post)[add cow]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/ (get)[get all cows]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 (get)[get single cow ]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [patch]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [delete]
 
