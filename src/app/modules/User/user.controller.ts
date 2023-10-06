@@ -14,41 +14,16 @@ const createUser = catchAsyncTry(async (req: Request, res: Response) => {
   })
 })
 
-// const createSeller = catchAsyncTry(async (req: Request, res: Response) => {
 
-//   const { ...seller } = req.body
-//   const {...user} = req.body
-//   const result = await UserService.createSeller(seller, user)
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Seller created successfully',
-//     data: result
-//   })
-// })
-
-// const createbuyer: RequestHandler = catchAsyncTry(async (req: Request, res: Response) => {
-//   const {...buyer} = req.body
-//   const { ...user } = req.body
-//   const result = await UserService.createbuyer(buyer, user)
-
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Buyer created successfully',
-//     data: result,
-//   })
-// })
-
-// const getAllUsers = catchAsyncTry(async (req: Request, res: Response) => {
-//   const result = await UserService.getAllUsersService()
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Users retrieved successfully',
-//     data: result,
-//   })
-// })
+const getAllUsers = catchAsyncTry(async (req: Request, res: Response) => {
+  const result = await UserService.getAllUsers()
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Users retrieved successfully',
+    data: result,
+  })
+})
 
 const getSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
   const id = req.params.id
@@ -73,16 +48,16 @@ const updateSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
   })
 })
 
-// const deleteSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
-//   const id = req.params.id
-//   const result = await UserService.deleteSingleUserService(id)
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'User deleted successfully',
-//     data: result,
-//   })
-// })
+const deleteSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const result = await UserService.deleteSingleUserService(id)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User deleted successfully',
+    data: result,
+  })
+})
 
 const CreateOrderCow = catchAsyncTry(async (req: Request, res: Response) => {
   const result = await UserService.orderCow(req.body)
@@ -112,8 +87,8 @@ export const UserController = {
   getAllOrders,
   // createSeller,
   // createbuyer,
-  // getAllUsers,
+  getAllUsers,
   getSingleUser,
   updateSingleUser,
-  // deleteSingleUser,
+  deleteSingleUser,
 }
