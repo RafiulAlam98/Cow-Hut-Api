@@ -1,4 +1,4 @@
-# cow-hut server
+# cow-hut-server
 
 ### github repo link : https://github.com/RafiulAlam98/cow-hut
 
@@ -10,16 +10,17 @@ https://cow-hut-zeta.vercel.app/
 # Application Routes:
 
 ### Sample User(Seller/Buyer) Post json type
-```{
-  "seller": {
+```
+{
+    "password": "hell8123",
+    "role": "seller",
     "name": {
-      "firstName": "luka",
-      "lastName": "mia"
+        "firstName": "Mwdejkcfnwjh",
+        "lastName": "Showqjefhibqujkpon"
     },
-    "phoneNumber": "+1 123-456-7890",
-    "address": "123 Main St, cumilla, dhaka",
-    "income": 1000
-  }
+    "phoneNumber": "01743wsdhcbwe714175",
+    "address": "Dhwedhieujaka",
+    "income": 0
 }
 ```
 
