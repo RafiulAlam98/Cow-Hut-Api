@@ -1,5 +1,6 @@
 import express from 'express'
 import { CowRoutes } from '../modules/Cow/cow.routes'
+import { OrderRoutes } from '../modules/Order/order.routes'
 import { SellerRoutes } from '../modules/Seller/seller.routes'
 import { UserRoutes } from '../modules/User/user.routes'
 import { BuyerRoutes } from './../modules/Buyer/buyer.route'
@@ -21,7 +22,7 @@ const moduleRoutes = [
   },
   {
     path: '/orders',
-    route: UserRoutes.router,
+    route: OrderRoutes.router,
   },
   {
     path: '/seller',

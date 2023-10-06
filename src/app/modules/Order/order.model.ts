@@ -1,5 +1,5 @@
-import { IOrder, OrderModel } from './order.interface'
 import { Schema, model } from 'mongoose'
+import { IOrder, OrderModel } from './order.interface'
 
 export const OrderSchema = new Schema<IOrder, OrderModel>(
   {
@@ -9,7 +9,7 @@ export const OrderSchema = new Schema<IOrder, OrderModel>(
     },
     buyer: {
       type: Schema.Types.ObjectId,
-      ref: 'Buyer',
+      ref: 'User',
     },
   },
   {

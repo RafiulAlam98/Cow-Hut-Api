@@ -59,32 +59,10 @@ const deleteSingleUser = catchAsyncTry(async (req: Request, res: Response) => {
   })
 })
 
-const CreateOrderCow = catchAsyncTry(async (req: Request, res: Response) => {
-  const result = await UserService.orderCow(req.body)
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Order is crerated  successfully',
-    data: result,
-  })
-})
-
-//get all orders
-const getAllOrders = catchAsyncTry(async (req: Request, res: Response) => {
-  const result = await UserService.getAllOrders()
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Order retrieved  successfully',
-    data: result,
-  })
-})
 
 export const UserController = {
-  CreateOrderCow,
   createUser,
-  getAllOrders,
   getAllUsers,
   getSingleUser,
   updateSingleUser,

@@ -3,8 +3,6 @@ import { UserController } from './user.controller'
 
 const router = express.Router()
 
-router.post('/', UserController.CreateOrderCow)
-router.get('/allOrder', UserController.getAllOrders)
 
 router.post('/signup', UserController.createUser)
 router.get('/:id', UserController.getSingleUser)
