@@ -27,16 +27,16 @@ https://cow-hut-zeta.vercel.app/
 ### User
 - https://cow-hut-zeta.vercel.app/api/v1/auth/signup [create user] (POST)
 - https://cow-hut-zeta.vercel.app/api/v1/users [get all users] (GET)
-- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [get Single user] (GET)
-- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b (Update Single user) (PATCH)
-- https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [Delete Single user] (DELETE)
+- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 [get Single user] (GET)
+- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 (Update Single user) (PATCH)
+- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 [Delete Single user] (DELETE)
 
 ### Cows
 - https://cow-hut-zeta.vercel.app/api/v1/cows (post)[add cow]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/ (get)[get all cows]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 (get)[get single cow ]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [patch]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [delete]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 (get)[get single cow ]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [patch]
+- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [delete]
 
 ### Sample Cow Data for create a cow
 ```
@@ -68,7 +68,7 @@ https://cow-hut-zeta.vercel.app/
 ### Sample Cow Order Data to create a Order
 ```
 {
-  "cow": "648dbe893f8caeacd1d92178",
-  "buyer": "648dbdd53f8caeacd1d92154"
+  "cow": "65200deb815549cee5d05da4",
+  "buyer": "65200e1b815549cee5d05dac"
 }
 ```
