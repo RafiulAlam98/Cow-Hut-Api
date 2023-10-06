@@ -24,27 +24,14 @@ https://cow-hut-zeta.vercel.app/
 ```
 
 ### User
-- https://cow-hut-zeta.vercel.app/api/v1/auth/signup/seller [create/signup a seller] (POST)
-- https://cow-hut-zeta.vercel.app/api/v1/auth/signup/buyer [create/signup a buyer] (POST)
+- https://cow-hut-zeta.vercel.app/api/v1/auth/signup [create user] (POST)
 - https://cow-hut-zeta.vercel.app/api/v1/users [get all users] (GET)
 - https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [get Single user] (GET)
 - https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b (Update Single user) (PATCH)
 - https://cow-hut-zeta.vercel.app/api/v1/users/649d453a4020c7b61481095b [Delete Single user] (DELETE)
 
-### Seller
-- https://cow-hut-zeta.vercel.app/api/v1/seller [Get all seller]
-- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [get single seller]
-- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [patch]
-- https://cow-hut-zeta.vercel.app/api/v1/seller/649d3ee44020c7b614810943 [delete]
-
-### Buyer
-- https://cow-hut-zeta.vercel.app/api/v1/buyer/ [get all buyer]
-- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [get single buyer]
-- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [patch]
-- https://cow-hut-zeta.vercel.app/api/v1/buyer/649d45394020c7b614810958 [delete]
-
 ### Cows
-- https://cow-hut-zeta.vercel.app/api/v1/cows/addcows [add cow]
+- https://cow-hut-zeta.vercel.app/api/v1/cows [add cow]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/ [get all cows]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [get single cow ]
 - https://cow-hut-zeta.vercel.app/api/v1/cows/649d46554020c7b614810964 [patch]
@@ -73,8 +60,8 @@ https://cow-hut-zeta.vercel.app/
 - https://cow-hut-zeta.vercel.app/api/v1/cows?searchTerm=Cha
   
 ### Orders
-- https://cow-hut-zeta.vercel.app/api/v1/order/addOrder [add order]
-- https://cow-hut-zeta.vercel.app/api/v1/order/allOrder [get all order]
+- https://cow-hut-zeta.vercel.app/api/v1/orders [create order]
+- https://cow-hut-zeta.vercel.app/api/v1/orders [get all order]
 
 
 ### Sample Cow Order Data to create a Order
