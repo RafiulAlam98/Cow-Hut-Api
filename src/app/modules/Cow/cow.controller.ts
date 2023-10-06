@@ -1,13 +1,13 @@
 import { Request, Response } from 'express'
 import httpStatus from 'http-status'
-import {  paginationFields } from '../../../constants/paginationConstants'
+import { paginationFields } from '../../../constants/paginationConstants'
 import { catchAsyncTry } from '../../../shared/catchAsyncTry'
 import pick from '../../../shared/pick'
 import sendResponse from '../../../shared/sendResponse'
 
-import { CowService } from './cow.service'
 import { cowFilterableFields } from './cow.constatnt'
 import { ICow } from './cow.interface'
+import { CowService } from './cow.service'
 
 const createCowController = catchAsyncTry(async (req, res) => {
   const { ...cows } = req.body
@@ -15,7 +15,7 @@ const createCowController = catchAsyncTry(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cow added successfully !',
+    message: 'Cow created successfully !',
     data: result,
   })
 })
@@ -25,8 +25,8 @@ const getAllCowsController = catchAsyncTry(
     const paginationOptions = pick(req.query, paginationFields)
     const filters = pick(req.query, cowFilterableFields)
     const result = await CowService.getAllCowsService(
-      paginationOptions,
-      filters
+      filters,
+      paginationOptions
     )
     sendResponse<ICow[]>(res, {
       statusCode: httpStatus.OK,

@@ -1,5 +1,6 @@
 import { Model, Types } from 'mongoose'
 import { IUser } from '../User/user.interfaces'
+
 export type IBreed =
   | 'Brahman'
   | 'Nellore'
@@ -17,22 +18,21 @@ export type ILocations =
   | 'Comilla'
   | 'Rangpur'
   | 'Mymensingh'
-
 export type ILabel = 'for sale' | 'sold out'
-
 export type ICategory = 'Dairy' | 'Beef' | 'Dual Purpose'
 
 export type ICow = {
   name: string
-  age: number
+  age: string
   price: number
   location: ILocations
   breed: IBreed
-  weight: number
+  weight: string
   label?: ILabel
   category: ICategory
   seller: Types.ObjectId | IUser
 }
+
+export type ICowFilters = { searchTerm?: string }
+
 export type CowModel = Model<ICow>
-
-

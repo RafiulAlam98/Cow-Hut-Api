@@ -20,16 +20,16 @@ const moduleRoutes = [
     route: CowRoutes.router,
   },
   {
+    path: '/order',
+    route: UserRoutes.router,
+  },
+  {
     path: '/seller',
     route: SellerRoutes.router,
   },
   {
     path: '/buyer',
     route: BuyerRoutes.router,
-  },
-  {
-    path: '/order',
-    route: UserRoutes.router,
   },
 ]
 

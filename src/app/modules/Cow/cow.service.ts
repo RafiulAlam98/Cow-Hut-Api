@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable no-undef */
-import { ICow } from './cow.interface'
+import { ICow, ICowFilters } from './cow.interface'
 
 import ApiError from '../../errors/ApiError'
 import {
@@ -24,7 +24,7 @@ const createCowService = async (cow: ICow): Promise<ICow> => {
 }
 
 const getAllCowsService = async (
-  filters: any,
+  filters: ICowFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<ICow[]>> => {
   const { searchTerm, ...filtersData } = filters
