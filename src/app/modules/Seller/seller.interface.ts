@@ -1,15 +1,13 @@
 import { Model } from 'mongoose'
-
-export type UserName = {
-  firstName: string
-  lastName: string
-}
+import { UserName } from '../Buyer/buyer.interface'
 
 export type ISeller = {
-  _id: any
+  _id?: string
   id: string
-  name: UserName
   phoneNumber: string
+  role: 'seller'
+  password: string
+  name: UserName
   address: string
   income: number
 }

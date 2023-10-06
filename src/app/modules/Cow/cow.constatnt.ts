@@ -23,20 +23,20 @@ export const cowBreed: IBreed[] = [
 export const cowLabel: ILabel[] = ['for sale', 'sold out']
 
 export const cowCategory: ICategory[] = ['Dairy', 'Beef', 'Dual Purpose']
-
 export const cowSearchableFields = [
-  'id',
   'name',
+  'age',
   'breed',
-  'location',
-  'label',
+  'weight',
   'category',
 ]
 
-
-export const cowsFilterableFields = [
+export const cowFilterableFields = [
   'searchTerm',
-  'minPrice',
-  'maxPrice',
-  'location',
+  'name',
+  'age',
+  'breed',
+  'weight',
+  'category',
+  'price',
 ]

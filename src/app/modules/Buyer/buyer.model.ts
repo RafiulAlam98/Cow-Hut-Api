@@ -1,5 +1,5 @@
-import { BuyerModel, IBuyer } from './buyer.interface'
 import { Schema, model } from 'mongoose'
+import { BuyerModel, IBuyer } from './buyer.interface'
 
 export const BuyerSchema = new Schema<IBuyer, BuyerModel>(
   {
@@ -7,6 +7,16 @@ export const BuyerSchema = new Schema<IBuyer, BuyerModel>(
       type: String,
       required: true,
       unique: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    role: {
+      type: String,
+      enum: ['buyer'],
+      required: true,
     },
     password: {
       type: String,
@@ -26,11 +36,7 @@ export const BuyerSchema = new Schema<IBuyer, BuyerModel>(
       },
       required: true,
     },
-    phoneNumber: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+
     address: {
       type: String,
       required: true,

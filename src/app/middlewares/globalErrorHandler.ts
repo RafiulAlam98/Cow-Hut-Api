@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 
@@ -7,7 +8,7 @@ import ApiError from '../errors/ApiError'
 import { IGenericErrorMessage } from '../../interfaces/error/error'
 import { ZodError } from 'zod'
 import config from '../../config'
-import { errorlogger } from '../../shared/logger'
+
 import { handleCastError } from '../errors/handleCastErrors'
 import { handleValidationError } from '../errors/handleValidationError'
 import { handleZodError } from '../errors/handleZodError'
@@ -24,7 +25,7 @@ export const globalErrorHandler: ErrorRequestHandler = (
 
   config.env === 'development'
     ? console.log('globalhandler12345', err)
-    : errorlogger.error('globalHandler', err)
+    : console.log('globalHandler', err)
 
   if (err?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(err)

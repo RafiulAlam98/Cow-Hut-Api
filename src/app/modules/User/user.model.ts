@@ -1,26 +1,55 @@
-import { IUser, UserModel } from './user.interfaces'
 import { Schema, model } from 'mongoose'
+import { IUser, UserModel } from './user.interfaces'
 
 const UserSchema = new Schema<IUser>(
   {
-    role: {
-      type: String,
-      required: true,
-    },
     id: {
       type: String,
       required: true,
       unique: true,
     },
-    seller: {
-      type: Schema.Types.ObjectId,
-      ref: 'Seller',
+    phoneNumber: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    buyer: {
-      type: Schema.Types.ObjectId,
-      ref: 'Buyer',
+    role: {
+      type: String,
+      enum: ['seller', 'buyer'],
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    name: {
+      type: {
+        firstName: {
+          type: String,
+          required: true,
+        },
+        lastName: {
+          type: String,
+          required: true,
+        },
+      },
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    budget: {
+      type: Number,
+      required: false,
+    },
+    income: {
+      type: Number,
+      required: false,
     },
   },
+
   {
     timestamps: true,
     toJSON: {

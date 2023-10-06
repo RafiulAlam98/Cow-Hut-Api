@@ -2,8 +2,13 @@ export type IPaginationOptions = {
   page?: number
   limit?: number
   sortBy?: string
-  sortOrder?: 'asc' | 'desc' // asc or dsc
-  minPrice?: number
-  maxPrice?: number
-  location: string
+  sortOrder?: 'asc' | 'desc'
+}
+export type IGenericResponse<T> = {
+  meta: {
+    page: number
+    limit: number
+    total: number
+  }
+  data: T
 }

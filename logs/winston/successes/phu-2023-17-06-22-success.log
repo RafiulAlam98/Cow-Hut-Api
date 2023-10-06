@@ -1,7 +1,0 @@
-{
-  message: 'database connected',
-  level: 'info',
-  service: 'user-service',
-  label: 'HI',
-  timestamp: '2023-06-17T16:30:19.789Z'
-}

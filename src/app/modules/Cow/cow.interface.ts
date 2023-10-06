@@ -35,4 +35,4 @@ export type ICow = {
 }
 export type CowModel = Model<ICow>
 
-export type ICowFilter = { searchTerm: string }
+

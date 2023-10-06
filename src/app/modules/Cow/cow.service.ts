@@ -1,12 +1,19 @@
-import { ICow, ICowFilter } from './cow.interface'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable no-undef */
+import { ICow } from './cow.interface'
 
 import ApiError from '../../errors/ApiError'
+import {
+  IGenericResponse,
+  IPaginationOptions,
+} from './../../../interfaces/paginations/paginations'
 import { Cow } from './cow.model'
-import { IPaginationOptions } from './../../../interfaces/paginations/paginations'
-import { buildWhereConditions } from '../../../helpersFn/buildWhereCondition'
-import { cowSearchableFields } from './cow.constatnt'
+
 import httpStatus from 'http-status'
+import { SortOrder } from 'mongoose'
 import { paginationSystem } from '../../../helpersFn/paginationSystem'
+import { cowSearchableFields } from './cow.constatnt'
 
 const createCowService = async (cow: ICow): Promise<ICow> => {
   const createdCowService = await Cow.create(cow)
@@ -17,29 +24,47 @@ const createCowService = async (cow: ICow): Promise<ICow> => {
 }
 
 const getAllCowsService = async (
-  filters: ICowFilter,
+  filters: any,
   paginationOptions: IPaginationOptions
-) => {
-  const { limit, page, skip, sortBy, sortOrder } =
-    paginationSystem.paginationFormat(paginationOptions)
+): Promise<IGenericResponse<ICow[]>> => {
   const { searchTerm, ...filtersData } = filters
 
-  const { whereConditions, sortConditions } = buildWhereConditions(
-    searchTerm,
-    filtersData,
-    cowSearchableFields,
-    sortBy,
-    sortOrder
-  )
+  const andConditions = []
+  if (searchTerm) {
+    andConditions.push({
+      $or: cowSearchableFields.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
+        },
+      })),
+    })
+  }
 
+  if (Object.keys(filtersData).length) {
+    andConditions.push({
+      $and: Object.entries(filtersData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    })
+  }
+
+  const whereConditions =
+    andConditions.length > 0 ? { $and: andConditions } : {}
+
+  const { page, skip, limit, sortBy, sortOrder } =
+    paginationSystem.calculatePagination(paginationOptions)
+
+  const sortConditions: { [key: string]: SortOrder } = {}
+
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder
+  }
   const result = await Cow.find(whereConditions)
-    .populate('seller')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit)
-
   const total = await Cow.countDocuments()
-
   return {
     meta: {
       page,
