@@ -5,7 +5,7 @@
 ### All Routes for Cow-Hut-Server
 
 ### Live Link 
-https://cow-hut-zeta.vercel.app/
+https://cow-hut-core-service.vercel.app/
 
 # Application Routes:
 
@@ -25,18 +25,18 @@ https://cow-hut-zeta.vercel.app/
 ```
 
 ### User
-- https://cow-hut-zeta.vercel.app/api/v1/auth/signup [create user] (POST)
-- https://cow-hut-zeta.vercel.app/api/v1/users [get all users] (GET)
-- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 [get Single user] (GET)
-- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 (Update Single user) (PATCH)
-- https://cow-hut-zeta.vercel.app/api/v1/users/65200deb815549cee5d05da4 [Delete Single user] (DELETE)
+- https://cow-hut-core-service.vercel.app/api/v1/auth/signup [create user] (POST)
+- https://cow-hut-core-service.vercel.app/api/v1/users [get all users] (GET)
+- https://cow-hut-core-service.vercel.app/api/v1/users/65200deb815549cee5d05da4 [get Single user] (GET)
+- https://cow-hut-core-service.vercel.app/api/v1/users/65200deb815549cee5d05da4 (Update Single user) (PATCH)
+- https://cow-hut-core-service.vercel.app/api/v1/users/65200deb815549cee5d05da4 [Delete Single user] (DELETE)
 
 ### Cows
-- https://cow-hut-zeta.vercel.app/api/v1/cows (post)[add cow]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/ (get)[get all cows]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 (get)[get single cow ]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [patch]
-- https://cow-hut-zeta.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [delete]
+- https://cow-hut-core-service.vercel.app/api/v1/cows (post)[add cow]
+- https://cow-hut-core-service.vercel.app/api/v1/cows/ (get)[get all cows]
+- https://cow-hut-core-service.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 (get)[get single cow ]
+- https://cow-hut-core-service.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [patch]
+- https://cow-hut-core-service.vercel.app/api/v1/cows/65201113281c3ae5145ad3a7 [delete]
 
 ### Sample Cow Data for create a cow
 ```
@@ -54,15 +54,15 @@ https://cow-hut-zeta.vercel.app/
 ```
 ### pagination field for cow
 
-- https://cow-hut-zeta.vercel.app/api/v1/cows?page=1&limit=1 [page and limit]
-- https://cow-hut-zeta.vercel.app/api/v1/cows?sortBy=price&sortOrder=asc  [sort]
-- https://cow-hut-zeta.vercel.app/api/v1/cows?minPrice=20000&maxPrice=70000  
-- https://cow-hut-zeta.vercel.app/api/v1/cows?location=Chattogram 
-- https://cow-hut-zeta.vercel.app/api/v1/cows?searchTerm=Cha
+- https://cow-hut-core-service.vercel.app/api/v1/cows?page=1&limit=1 [page and limit]
+- https://cow-hut-core-service.vercel.app/api/v1/cows?sortBy=price&sortOrder=asc  [sort]
+- https://cow-hut-core-service.vercel.app/api/v1/cows?minPrice=20000&maxPrice=70000  
+- https://cow-hut-core-service.vercel.app/api/v1/cows?location=Chattogram 
+- https://cow-hut-core-service.vercel.app/api/v1/cows?searchTerm=Cha
   
 ### Orders
-- https://cow-hut-zeta.vercel.app/api/v1/orders [create order]
-- https://cow-hut-zeta.vercel.app/api/v1/orders [get all order]
+- https://cow-hut-core-service.vercel.app/api/v1/orders [create order]
+- https://cow-hut-core-service.vercel.app/api/v1/orders [get all order]
 
 
 ### Sample Cow Order Data to create a Order
